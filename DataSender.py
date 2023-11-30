@@ -5,3 +5,4 @@ s.connect(("192.168.15.18",55300))
 
 msg = s.recv(55300)
 print(msg.decode("utf8"))
+
