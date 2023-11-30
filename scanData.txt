@@ -1,0 +1,29 @@
+        protocol : tcp
+
+        portid : 21
+
+        state : filtered
+
+        reason : no-response
+
+        reason_ttl : 0
+
+ Result:	[ 0 / 1024 ]
+
+        portid : 21
+
+        state : closed
+
+        reason : conn-refused
+
+        reason_ttl : 0
+
+        protocol : tcp
+
+        portid : 21
+
+        state : closed
+
+        reason : conn-refused
+
+        reason_ttl : 0

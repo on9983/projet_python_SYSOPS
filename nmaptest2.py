@@ -35,7 +35,7 @@ def startScan():
 def saveScan():
 	global log, target, ports, ip_f
 	log[5] = " Result:\t[ " + str(len(ports)) + " / " + str(ip_f) + " ]\n"
-	with open('portscan-'+str(target)+'.txt', mode='wt', encoding='utf-8') as myfile:
+	with open('scanData.txt', mode='wt', encoding='utf-8') as myfile:
 		myfile.write('\n'.join(log))
 
 def clearScan():
