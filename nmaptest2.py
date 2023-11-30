@@ -10,65 +10,27 @@ target = 'localhost'
 
 # ==== Scanning Functions ====
 def startScan():
-	try:
-		nmap = nmap3.Nmap()
-		results = nmap.scan_top_ports("192.168.135.0/24")
-		print(results)
-		for ip, data_ip in results.items():
-			m = ""
-			nb_client = 0
-			if('ports' in data_ip):
-				if(data_ip['ports'] != []):
-					m = "Adresse IP : " + ip + "\n"
-					listbox.insert("end", m)
-					m = "    "+"port : "
-					listbox.insert("end", m)
-					for port_label, port_info in data_ip['ports'][0].items():
-						if (type(port_info) is str):
-							m = "    " + "    " + port_label + " : " + port_info + "\n"
-							listbox.insert("end", m)
-							nb_client += 1
-							L25.config(text = nb_client)
-							log.append(m)
-							# updateResult()
-	except OSError: print('> Too many open sockets.')
-	except:
-		sys.exit()
+	nmap = nmap3.Nmap()
+	results = nmap.scan_top_ports("192.168.15.18/24")
+	#print(results)
+	m = ""
+	nb_client = 0
+	for ip, data_ip in results.items():
+		if('ports' in data_ip):
+			if(data_ip['ports'] != []):
+				m = "Adresse IP : " + ip + "\n"
+				listbox.insert("end", m)
+				m = "    "+"port : "
+				listbox.insert("end", m)
+				nb_client += 1
+				L25.config(text = nb_client)
+				for port_label, port_info in data_ip['ports'][0].items():
+					if (type(port_info) is str):
+						m = "    " + "    " + port_label + " : " + port_info + "\n"
+						listbox.insert("end", m)
+						log.append(m)
+						# updateResult()
 	
-# def updateResult():
-# 	rtext = " [ " + str(len(ports)) + " / " + str(ip_f) + " ] ~ " + str(target)
-# 	L27.configure(text = rtext)
-
-# def startScan():
-# 	global ports, log, target, ip_f
-# 	clearScan()
-# 	log = []
-# 	ports = []
-# 	# Get ports ranges from GUI
-# 	ip_s = int(L24.get())
-# 	ip_f = int(L25.get())
-# 	# Start writing the log file
-# 	log.append('> Port Scanner')
-# 	log.append('='*14 + '\n')
-# 	log.append(' Target:\t' + str(target))
-	
-# 	try:
-# 		target = socket.gethostbyname(str(L22.get()))
-# 		log.append(' IP Adr.:\t' + str(target))
-# 		log.append(' Ports: \t[ ' + str(ip_s) + ' / ' + str(ip_f) + ' ]')
-# 		log.append('\n')
-# 		# Lets start scanning ports!
-# 		while ip_s <= ip_f:
-# 			try:
-# 				scan = threading.Thread(target=scanPort, args=(target, ip_s))
-# 				scan.setDaemon(True)
-# 				scan.start()
-# 			except: time.sleep(0.01)
-# 			ip_s += 1
-# 	except:
-# 		m = '> Target ' + str(L22.get()) + ' not found.'
-# 		log.append(m)
-# 		listbox.insert(0, str(m))
 		
 def saveScan():
 	global log, target, ports, ip_f
