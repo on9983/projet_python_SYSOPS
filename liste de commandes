@@ -1,0 +1,6 @@
+
+//affichage des cron:
+crontab -e
+
+// ou est python3 ?
+which python3
