@@ -1,4 +1,4 @@
-import nmap3, json
+import nmap3, json, socket
 
 
 class MakeScanCommand:
@@ -57,6 +57,7 @@ class MakeScanCommand:
                     })
         dict_ip.update({ 
             'nb_clients': nb_clients,
+            'hostName': socket.gethostname(),
         })
         
         return(dict_ip)
