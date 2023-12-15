@@ -14,7 +14,7 @@ class MakeScanCommand:
 
     def startScan():
         nmap = nmap3.Nmap()
-        results = nmap.scan_top_ports("192.168.15.1/24")
+        results = nmap.scan_top_ports(socket.gethostbyname(socket.gethostname()+".local") + "/24")
         #results =nmap.nmap_os_detection("192.168.15.18/24")
         #results=nmap.nmap_list_scan("192.168.15.18/24")
         #results=nmap.nmap_subnet_scan("192.168.15.18/24")
