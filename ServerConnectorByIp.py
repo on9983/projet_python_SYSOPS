@@ -3,7 +3,7 @@ from serverCommands.MakeScanCommand import MakeScanCommand
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((socket.gethostbyname(socket.gethostname()),9999))
+s.bind((socket.gethostbyname(socket.gethostname()+".local"),9999))
 s.listen(5)
 while True:
     SVR, address = s.accept()
